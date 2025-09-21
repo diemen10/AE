@@ -1,31 +1,19 @@
-﻿const ADS_WHATSAPP_SEND_TO = process.env.NEXT_PUBLIC_GADS_WHATSAPP_SEND_TO ?? "";
-
-type GtagEventParams = Record<string, string | number | boolean | undefined>;
-
-const getGtag = () => {
+const getDataLayer = (): unknown[] | undefined => {
   if (typeof window === "undefined") return undefined;
-  return (window as typeof window & { gtag?: (...args: unknown[]) => void }).gtag;
+  const w = window as typeof window & { dataLayer?: unknown[] };
+  w.dataLayer = w.dataLayer || [];
+  return w.dataLayer;
 };
 
-export const trackEvent = (eventName: string, params: GtagEventParams = {}): void => {
-  const gtag = getGtag();
-  if (!gtag) return;
-  gtag("event", eventName, params);
-};
-
-export const trackConversion = (sendTo: string) => {
-  if (!sendTo) return;
-  trackEvent("conversion", {
-    send_to: sendTo,
-  });
+export const pushToDataLayer = (eventData: Record<string, unknown>): void => {
+  const dataLayer = getDataLayer();
+  if (!dataLayer) return;
+  dataLayer.push(eventData);
 };
 
 export const trackWhatsappClick = (source: string) => {
-  trackEvent("whatsapp_click", {
+  pushToDataLayer({
+    event: "whatsapp_click",
     source,
   });
-
-  if (ADS_WHATSAPP_SEND_TO) {
-    trackConversion(ADS_WHATSAPP_SEND_TO);
-  }
 };

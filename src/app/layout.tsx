@@ -1,4 +1,4 @@
-﻿import "./globals.css";
+import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
@@ -6,49 +6,47 @@ import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID;
-const GTAG_ID = GA_MEASUREMENT_ID ?? GADS_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
-    default: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
-    template: "%s | Tu AsesorÃ­a de ExtranjerÃ­a",
+    default: "Tu Asesor�a de Extranjer�a | Madrid & Online",
+    template: "%s | Tu Asesor�a de Extranjer�a",
   },
   description:
-    "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+    "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
   keywords: [
-    "extranjerÃ­a",
-    "asesorÃ­a migratoria",
-    "visado de estudios EspaÃ±a",
+    "extranjer�a",
+    "asesor�a migratoria",
+    "visado de estudios Espa�a",
     "arraigo social",
-    "nacionalidad espaÃ±ola",
+    "nacionalidad espa�ola",
     "residencia trabajo",
   ],
-  authors: [{ name: "Tu AsesorÃ­a de ExtranjerÃ­a" }],
-  creator: "Tu AsesorÃ­a de ExtranjerÃ­a",
+  authors: [{ name: "Tu Asesor�a de Extranjer�a" }],
+  creator: "Tu Asesor�a de Extranjer�a",
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: "https://tuextranjeria.com",
-    siteName: "Tu AsesorÃ­a de ExtranjerÃ­a",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    siteName: "Tu Asesor�a de Extranjer�a",
+    title: "Tu Asesor�a de Extranjer�a | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
     images: [
       {
         url: "https://tuextranjeria.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tu AsesorÃ­a de ExtranjerÃ­a",
+        alt: "Tu Asesor�a de Extranjer�a",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    title: "Tu Asesor�a de Extranjer�a | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
     images: ["https://tuextranjeria.com/og-image.jpg"],
   },
   icons: {
@@ -69,25 +67,39 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Analytics />
-        {GTAG_ID ? (
+        {GTM_ID ? (
           <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
+            <Script id="gtm-loader" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}');` : ""}
-                ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ""}
+                window.dataLayer.push({ event: "gtm.init" });
+                (function(w,d,s,l,i){
+                  w[l] = w[l] || [];
+                  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                  var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l !== "dataLayer" ? "&l=" + l : "";
+                  j.async = true;
+                  j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                  f.parentNode.insertBefore(j, f);
+                })(window, document, "script", "dataLayer", "${GTM_ID}");
               `}
             </Script>
+            <noscript
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <iframe
+                    src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
+                    height="0"
+                    width="0"
+                    style="display:none;visibility:hidden"
+                  ></iframe>
+                `,
+              }}
+            />
           </>
         ) : null}
       </body>
     </html>
   );
 }
-

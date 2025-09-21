@@ -139,7 +139,7 @@ export default function Landing() {
                   <Button className="w-full rounded-2xl">Quiero empezar ahora</Button>
                 </WhatsappLink>
                 <p className="text-[11px] text-slate-400 mt-2">
-                  Sin compromiso. Respuesta media en 2–6 h laborales.
+                  Sin compromiso. Respuesta media en 2�6 h laborales.
                 </p>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function Landing() {
             {[
               {
                 title: "Visado de estudios",
-                price: "desde 249€",
+                price: "desde 249��",
                 bullets: [
                   "Checklist de documentos",
                   "Carta de motivación y revisión",
@@ -178,7 +178,7 @@ export default function Landing() {
               },
               {
                 title: "Cambio a residencia y trabajo",
-                price: "desde 349€",
+                price: "desde 349��",
                 bullets: [
                   "Oferta de empleo y EX-03",
                   "Presentación telemática",
@@ -188,7 +188,7 @@ export default function Landing() {
               },
               {
                 title: "Arraigos / Nacionalidad",
-                price: "desde 299€",
+                price: "desde 299��",
                 bullets: [
                   "Evaluación de vía legal",
                   "Recolección de pruebas",
@@ -259,8 +259,8 @@ export default function Landing() {
               (t, i) => (
                 <Card key={i} className="rounded-3xl">
                   <CardContent className="p-6 text-sm text-slate-600">
-                    “{t}”
-                    <div className="mt-3 text-xs text-slate-400">— Cliente verificado</div>
+                    �S{t}⬝
+                    <div className="mt-3 text-xs text-slate-400">� Cliente verificado</div>
                   </CardContent>
                 </Card>
               )
@@ -284,7 +284,7 @@ export default function Landing() {
             <AccordionItem value="q2">
               <AccordionTrigger>¿Cuánto tardan en dar una cita en el consulado?</AccordionTrigger>
               <AccordionContent>
-                Depende del país y la época del año. Recomendamos iniciar el proceso 60–90 días antes del inicio del
+                Depende del país y la época del año. Recomendamos iniciar el proceso 60�90 días antes del inicio del
                 curso.
               </AccordionContent>
             </AccordionItem>
