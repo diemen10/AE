@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import Script from "next/script";
 
 const messages = {
   contact: {
@@ -30,9 +31,14 @@ type GraciasPageProps = {
   };
 };
 
+const CONTACT_CONVERSION_SEND_TO = process.env.NEXT_PUBLIC_GADS_CONTACT_SEND_TO;
+
 export default function GraciasPage({ searchParams }: GraciasPageProps) {
   const variantKey = (searchParams.source ?? "default") as keyof typeof messages;
   const variant = messages[variantKey] ?? messages.default;
+
+  const shouldFireContactConversion =
+    variantKey === "contact" && Boolean(CONTACT_CONVERSION_SEND_TO);
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-24 text-center">
@@ -41,6 +47,12 @@ export default function GraciasPage({ searchParams }: GraciasPageProps) {
       <Link href={variant.ctaHref} className="inline-block mt-8 underline">
         {variant.ctaLabel}
       </Link>
+
+      {shouldFireContactConversion ? (
+        <Script id="conversion-contact" strategy="afterInteractive">
+          {`gtag('event', 'conversion', {'send_to': '${CONTACT_CONVERSION_SEND_TO}'});`}
+        </Script>
+      ) : null}
     </div>
   );
 }

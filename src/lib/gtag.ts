@@ -1,4 +1,4 @@
-﻿export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+﻿const ADS_WHATSAPP_SEND_TO = process.env.NEXT_PUBLIC_GADS_WHATSAPP_SEND_TO ?? "";
 
 type GtagEventParams = Record<string, string | number | boolean | undefined>;
 
@@ -13,8 +13,19 @@ export const trackEvent = (eventName: string, params: GtagEventParams = {}): voi
   gtag("event", eventName, params);
 };
 
+export const trackConversion = (sendTo: string) => {
+  if (!sendTo) return;
+  trackEvent("conversion", {
+    send_to: sendTo,
+  });
+};
+
 export const trackWhatsappClick = (source: string) => {
   trackEvent("whatsapp_click", {
     source,
   });
+
+  if (ADS_WHATSAPP_SEND_TO) {
+    trackConversion(ADS_WHATSAPP_SEND_TO);
+  }
 };
