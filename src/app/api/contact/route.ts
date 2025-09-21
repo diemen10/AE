@@ -111,7 +111,10 @@ export async function POST(request: Request) {
     sendSlackNotification(payload),
   ]);
 
-  return NextResponse.redirect(new URL("/gracias", request.url), {
+  const redirectUrl = new URL("/gracias", request.url);
+  redirectUrl.searchParams.set("source", "contact");
+
+  return NextResponse.redirect(redirectUrl, {
     status: 303,
   });
 }

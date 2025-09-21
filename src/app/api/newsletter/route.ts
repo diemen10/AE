@@ -46,7 +46,10 @@ export async function POST(request: Request) {
       });
     }
 
-    return NextResponse.redirect(new URL("/gracias", request.url), {
+    const redirectUrl = new URL("/gracias", request.url);
+    redirectUrl.searchParams.set("source", "newsletter");
+
+    return NextResponse.redirect(redirectUrl, {
       status: 303,
     });
   } catch (error) {
