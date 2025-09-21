@@ -1,52 +1,52 @@
-﻿// ConfiguraciÃ³n centralizada de metadatos para SEO en Next.js (App Router)
-// Coloca este archivo en /app/layout.tsx
-
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export const metadata: Metadata = {
   title: {
-    default: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
-    template: "%s | Tu AsesorÃ­a de ExtranjerÃ­a",
+    default: "Tu Asesoría de Extranjería | Madrid & Online",
+    template: "%s | Tu Asesoría de Extranjería",
   },
   description:
-    "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+    "Trámites migratorios claros, rápidos y sin estrés. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en España.",
   keywords: [
-    "extranjerÃ­a",
-    "asesorÃ­a migratoria",
-    "visado de estudios EspaÃ±a",
+    "extranjería",
+    "asesoría migratoria",
+    "visado de estudios España",
     "arraigo social",
-    "nacionalidad espaÃ±ola",
+    "nacionalidad española",
     "residencia trabajo",
   ],
-  authors: [{ name: "Tu AsesorÃ­a de ExtranjerÃ­a" }],
-  creator: "Tu AsesorÃ­a de ExtranjerÃ­a",
+  authors: [{ name: "Tu Asesoría de Extranjería" }],
+  creator: "Tu Asesoría de Extranjería",
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: "https://tuextranjeria.com",
-    siteName: "Tu AsesorÃ­a de ExtranjerÃ­a",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    siteName: "Tu Asesoría de Extranjería",
+    title: "Tu Asesoría de Extranjería | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Trámites migratorios claros, rápidos y sin estrés. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en España.",
     images: [
       {
         url: "https://tuextranjeria.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tu AsesorÃ­a de ExtranjerÃ­a",
+        alt: "Tu Asesoría de Extranjería",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    title: "Tu Asesoría de Extranjería | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Trámites migratorios claros, rápidos y sin estrés. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en España.",
     images: ["https://tuextranjeria.com/og-image.jpg"],
   },
   icons: {
@@ -67,6 +67,22 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Analytics />
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
