@@ -1,4 +1,4 @@
-import "./globals.css";
+﻿import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID;
+const GTAG_ID = GA_MEASUREMENT_ID ?? GADS_ID;
 
 export const metadata: Metadata = {
   title: {
@@ -67,18 +69,19 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Analytics />
-        {GA_MEASUREMENT_ID ? (
+        {GTAG_ID ? (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`}
               strategy="afterInteractive"
             />
-            <Script id="ga4-init" strategy="afterInteractive">
+            <Script id="gtag-init" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}');
+                ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}');` : ""}
+                ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ""}
               `}
             </Script>
           </>
