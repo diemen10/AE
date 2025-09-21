@@ -220,34 +220,115 @@ export default function Landing() {
           </Accordion>
         </div>
       </section>
-
       {/* CONTACTO */}
       <section id="contacto" className="py-14 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold">Agenda una llamada</h2>
-            <p className="mt-2 text-slate-600">Cuéntanos tu caso y te damos un plan claro con pasos y presupuesto.</p>
+            <p className="mt-2 text-slate-600">
+              Cuentanos tu caso y te damos un plan claro con pasos y presupuesto.
+            </p>
             <div className="mt-6 space-y-3 text-slate-600 text-sm">
-              <div className="flex items-center gap-2"><Phone className="h-4 w-4"/> WhatsApp: <a className="underline" href={WA_LINK} target="_blank" rel="noreferrer">{BIZ.whatsapp}</a></div>
-              <div className="flex items-center gap-2"><Mail className="h-4 w-4"/> Email: <a className="underline" href={`mailto:${BIZ.email}`}>{BIZ.email}</a></div>
-              <div className="flex items-center gap-2"><Globe2 className="h-4 w-4"/> Atención en {BIZ.ciudad} y online.</div>
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 hover:text-slate-900"
+              >
+                <Phone className="h-4 w-4" />
+                <span>WhatsApp: {BIZ.whatsapp}</span>
+              </a>
+              <a
+                href={`mailto:${BIZ.email}`}
+                className="flex items-center gap-2 hover:text-slate-900"
+              >
+                <Mail className="h-4 w-4" />
+                <span>{BIZ.email}</span>
+              </a>
+              <div className="flex items-center gap-2">
+                <Globe2 className="h-4 w-4" />
+                <span>Atencion en {BIZ.ciudad} y online</span>
+              </div>
             </div>
           </div>
+
           <Card className="rounded-3xl">
             <CardHeader>
               <CardTitle>Formulario de contacto</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <Input placeholder="Nombre y apellidos" />
-              <Input placeholder="Email" type="email" />
-              <Input placeholder="Teléfono / WhatsApp" />
-              <Textarea placeholder="Cuéntanos tu caso (ej. visado de estudios desde Bogotá en septiembre)" rows={5} />
-              <Button className="w-full rounded-2xl">Enviar</Button>
-              <p className="text-[11px] text-slate-400">Al enviar aceptas nuestra política de privacidad. Te contactaremos por email o WhatsApp.</p>
+            <CardContent className="p-6">
+              {/* Reemplaza action con el endpoint real de tu formulario */}
+              <form
+                action="https://formspree.io/f/myzdbjzq"
+                method="POST"
+                className="space-y-3"
+              >
+                <Input name="name" placeholder="Nombre y apellidos" required />
+                <Input name="email" type="email" placeholder="Email" required />
+                <Input name="phone" placeholder="Telefono / WhatsApp" />
+                <Textarea
+                  name="message"
+                  placeholder="Cuentanos tu caso (ej. visado de estudios desde Bogota en septiembre)"
+                  rows={5}
+                />
+                <input type="hidden" name="_subject" value="Nuevo lead web - Contacto asesoria" />
+                <input type="hidden" name="_next" value="/gracias" />
+                <input type="hidden" name="_captcha" value="false" />
+                <Button
+                  type="submit"
+                  className="w-full h-11 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:opacity-90"
+                >
+                  Enviar
+                </Button>
+                <p className="text-[11px] text-slate-400">
+                  Al enviar aceptas nuestra politica de privacidad. Te contactaremos por email o WhatsApp.
+                </p>
+              </form>
             </CardContent>
           </Card>
         </div>
       </section>
+      {/* NEWSLETTER */}
+      <section id="newsletter" className="py-14 md:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center">
+            <Badge className="rounded-full bg-slate-900 text-white">Tips por email</Badge>
+            <h2 className="mt-3 text-2xl md:text-3xl font-bold">Suscribete a la newsletter</h2>
+            <p className="mt-2 text-slate-600">
+              Consejos y novedades sobre visados, residencias y nacionalidad directamente en tu correo.
+            </p>
+          </div>
+          <Card className="mt-8 rounded-3xl bg-white/80 shadow-sm">
+            <CardContent className="p-6 sm:p-8">
+              {/* Reemplaza esta accion con tu ruta si necesitas otra integracion */}
+              <form
+                action="/api/newsletter"
+                method="POST"
+                className="flex flex-col gap-3 sm:flex-row sm:items-center"
+              >
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Correo electronico
+                </label>
+                <Input
+                  id="newsletter-email"
+                  type="email"
+                  name="email"
+                  placeholder="Tu email"
+                  required
+                  className="flex-1"
+                />
+                <Button type="submit" className="rounded-2xl w-full sm:w-auto">
+                  Suscribirme
+                </Button>
+              </form>
+              <p className="mt-3 text-[11px] text-slate-400 text-center sm:text-left">
+                Prometemos no enviar spam. Solo informacion util para tu proceso migratorio.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+            
 
       {/* FOOTER */}
       <footer className="py-10 border-t bg-slate-50">
@@ -266,3 +347,9 @@ export default function Landing() {
     </div>
   );
 }
+
+
+
+
+
+
