@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,19 +7,26 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, Phone, Mail, Globe2, ArrowRight, Clock, ShieldCheck, MapPin, GraduationCap, Building2, Users, FileText } from "lucide-react";
 
-// â€”â€”â€” QUICK SETTINGS â€”â€”â€”
+// --- QUICK SETTINGS ---
+const DEFAULT_WHATSAPP_NUMBER = "+34123456789";
+const DEFAULT_WHATSAPP_MESSAGE = "Hola, quiero ayuda con mi tramite (visado de estudios / trabajo / arraigo / nacionalidad).";
+
+const whatsappNumberRaw = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? DEFAULT_WHATSAPP_NUMBER).trim();
+const whatsappMessageRaw = (process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? DEFAULT_WHATSAPP_MESSAGE).trim();
+const whatsappNumberDigits = whatsappNumberRaw.replace(/\D/g, "");
+
 const BIZ = {
-  nombre: "Tu AsesorÃ­a de ExtranjerÃ­a",
+  nombre: "Tu Asesoria de Extranjeria",
   ciudad: "Madrid",
-  whatsapp: "+34123456789", // formato internacional
+  whatsapp: whatsappNumberRaw,
   email: "hola@tuextranjeria.com",
-  slogan: "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s",
-  acento: "from-cyan-500 to-blue-600", // Tailwind gradient
+  slogan: "Tramites migratorios claros, rapidos y sin estres",
+  acento: "from-cyan-500 to-blue-600",
 };
 
-const WA_LINK = `https://wa.me/${BIZ.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Hola, quiero ayuda con mi trÃ¡mite (visado de estudios / trabajo / arraigo / nacionalidad)."
-)}`;
+const WA_LINK = whatsappNumberDigits
+  ? `https://wa.me/${whatsappNumberDigits}${whatsappMessageRaw ? `?text=${encodeURIComponent(whatsappMessageRaw)}` : ""}`
+  : "#contacto";
 
 export default function Landing() {
   return (
@@ -33,7 +40,7 @@ export default function Landing() {
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
             <a href="#servicios" className="hover:text-slate-900">Servicios</a>
-            <a href="#proceso" className="hover:text-slate-900">CÃ³mo trabajamos</a>
+            <a href="#proceso" className="hover:text-slate-900">CÃƒÂ³mo trabajamos</a>
             <a href="#faq" className="hover:text-slate-900">FAQ</a>
             <a href="#contacto" className="hover:text-slate-900">Contacto</a>
           </div>
@@ -49,7 +56,7 @@ export default function Landing() {
       <header className="relative">
         <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <Badge className="bg-slate-900 text-white rounded-full">{BIZ.ciudad} Â· Online</Badge>
+            <Badge className="bg-slate-900 text-white rounded-full">{BIZ.ciudad} Ã‚Â· Online</Badge>
             <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
               {BIZ.slogan}
             </h1>
@@ -66,15 +73,15 @@ export default function Landing() {
             </div>
             <div className="mt-6 flex items-center gap-6 text-sm text-slate-500">
               <span className="flex items-center gap-2"><Clock className="h-4 w-4"/> Respuesta en &lt;24h</span>
-              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> TrÃ¡mite seguro</span>
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4"/> {BIZ.ciudad} Â· Online</span>
+              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> TrÃƒÂ¡mite seguro</span>
+              <span className="flex items-center gap-2"><MapPin className="h-4 w-4"/> {BIZ.ciudad} Ã‚Â· Online</span>
             </div>
           </div>
           <div className="relative">
             <div className={`rounded-3xl p-1 bg-gradient-to-br ${BIZ.acento} shadow-xl`}>
               <div className="rounded-3xl bg-white p-6 md:p-8">
-                <h3 className="font-semibold text-xl">Â¿QuÃ© necesitas tramitar?</h3>
-                <p className="text-slate-500 text-sm mt-1">Elige una opciÃ³n y te contactamos hoy.</p>
+                <h3 className="font-semibold text-xl">Ã‚Â¿QuÃƒÂ© necesitas tramitar?</h3>
+                <p className="text-slate-500 text-sm mt-1">Elige una opciÃƒÂ³n y te contactamos hoy.</p>
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   {[
                     {title: "Visado estudios", icon: <GraduationCap className="h-4 w-4"/>},
@@ -93,7 +100,7 @@ export default function Landing() {
                 <a href={WA_LINK} target="_blank" rel="noreferrer" className="block mt-4">
                   <Button className="w-full rounded-2xl">Quiero empezar ahora</Button>
                 </a>
-                <p className="text-[11px] text-slate-400 mt-2">Sin compromiso. Respuesta media en 2â€“6 h laborales.</p>
+                <p className="text-[11px] text-slate-400 mt-2">Sin compromiso. Respuesta media en 2Ã¢â‚¬â€œ6 h laborales.</p>
               </div>
             </div>
           </div>
@@ -103,7 +110,7 @@ export default function Landing() {
       {/* TRUST / MARCAS */}
       <section className="py-8">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between gap-6">
-          {["ExtranjerÃ­a", "Universidades", "Consulados", "ONGs"].map((m) => (
+          {["ExtranjerÃƒÂ­a", "Universidades", "Consulados", "ONGs"].map((m) => (
             <div key={m} className="text-slate-400 text-sm">Socios: {m}</div>
           ))}
         </div>
@@ -113,35 +120,35 @@ export default function Landing() {
       <section id="servicios" className="py-14 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold">Servicios y paquetes</h2>
-          <p className="mt-2 text-slate-600">Precios orientativos. Pide tu presupuesto segÃºn tu caso.</p>
+          <p className="mt-2 text-slate-600">Precios orientativos. Pide tu presupuesto segÃƒÂºn tu caso.</p>
 
           <div className="grid md:grid-cols-3 gap-6 mt-8">
             {[{
               title: "Visado de estudios",
-              price: "desde 249â‚¬",
+              price: "desde 249Ã¢â€šÂ¬",
               bullets: [
                 "Checklist de documentos",
-                "Carta de motivaciÃ³n y revisiÃ³n",
+                "Carta de motivaciÃƒÂ³n y revisiÃƒÂ³n",
                 "Cita consulado y seguimiento",
                 "Trabajo 30h/semana (si aplica)",
               ],
             }, {
               title: "Cambio a residencia y trabajo",
-              price: "desde 349â‚¬",
+              price: "desde 349Ã¢â€šÂ¬",
               bullets: [
-                "Oferta de empleo y EXâ€‘03",
-                "PresentaciÃ³n telemÃ¡tica",
+                "Oferta de empleo y EXÃ¢â‚¬â€˜03",
+                "PresentaciÃƒÂ³n telemÃƒÂ¡tica",
                 "TIE y alta en Seguridad Social",
-                "Soporte 30 dÃ­as postâ€‘aprobaciÃ³n",
+                "Soporte 30 dÃƒÂ­as postÃ¢â‚¬â€˜aprobaciÃƒÂ³n",
               ],
             }, {
               title: "Arraigos / Nacionalidad",
-              price: "desde 299â‚¬",
+              price: "desde 299Ã¢â€šÂ¬",
               bullets: [
-                "EvaluaciÃ³n de vÃ­a legal",
-                "RecolecciÃ³n de pruebas",
-                "PresentaciÃ³n y recursos",
-                "AcompaÃ±amiento completo",
+                "EvaluaciÃƒÂ³n de vÃƒÂ­a legal",
+                "RecolecciÃƒÂ³n de pruebas",
+                "PresentaciÃƒÂ³n y recursos",
+                "AcompaÃƒÂ±amiento completo",
               ],
             }].map((p, idx) => (
               <Card key={idx} className="rounded-3xl">
@@ -171,9 +178,9 @@ export default function Landing() {
       {/* PROCESO */}
       <section id="proceso" className="py-14 md:py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold">C��mo trabajamos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Cï¿½ï¿½mo trabajamos</h2>
           <div className="grid md:grid-cols-4 gap-6 mt-8">
-            {["Diagn��stico gratuito", "Plan a medida", "Presentaci��n del expediente", "Acompa��amiento hasta resoluci��n"].map((step, i) => (
+            {["Diagnï¿½ï¿½stico gratuito", "Plan a medida", "Presentaciï¿½ï¿½n del expediente", "Acompaï¿½ï¿½amiento hasta resoluciï¿½ï¿½n"].map((step, i) => (
               <Card key={i} className="rounded-3xl">
                 <CardContent className="p-6">
                   <div className={`h-10 w-10 rounded-2xl bg-gradient-to-br ${BIZ.acento} mb-4`} />
@@ -195,7 +202,7 @@ export default function Landing() {
               <Card key={i} className="rounded-3xl">
                 <CardContent className="p-6 text-sm text-slate-600">
                   &ldquo;{t}&rdquo;
-                  <div className="mt-3 text-xs text-slate-400">— Cliente verificado</div>
+                  <div className="mt-3 text-xs text-slate-400">â€” Cliente verificado</div>
                 </CardContent>
               </Card>
             ))}
@@ -209,15 +216,15 @@ export default function Landing() {
           <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
           <Accordion type="single" collapsible className="mt-6">
             <AccordionItem value="q1">
-              <AccordionTrigger>¿Puedo solicitar estudios estando en Espana como turista?</AccordionTrigger>
+              <AccordionTrigger>Â¿Puedo solicitar estudios estando en Espana como turista?</AccordionTrigger>
               <AccordionContent>Si, si entraste legalmente y presentas la solicitud dentro de los primeros 60 dias de tu estancia. Te guiamos en la cita y documentos.</AccordionContent>
             </AccordionItem>
             <AccordionItem value="q2">
-              <AccordionTrigger>¿Cuanto tardan en dar una cita en el consulado?</AccordionTrigger>
+              <AccordionTrigger>Â¿Cuanto tardan en dar una cita en el consulado?</AccordionTrigger>
               <AccordionContent>Depende del pais y la epoca del ano. Recomendamos iniciar el proceso 60-90 dias antes del inicio del curso.</AccordionContent>
             </AccordionItem>
             <AccordionItem value="q3">
-              <AccordionTrigger>¿Puedo trabajar con visado de estudios?</AccordionTrigger>
+              <AccordionTrigger>Â¿Puedo trabajar con visado de estudios?</AccordionTrigger>
               <AccordionContent>Con la normativa vigente, hasta 30 horas semanales si tus estudios lo permiten. Te explicamos los detalles segun tu caso.</AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -337,7 +344,7 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <div className="flex items-center gap-2">
             <div className={`h-7 w-7 rounded-xl bg-gradient-to-br ${BIZ.acento}`} />
-            <span>{BIZ.nombre} Â© {new Date().getFullYear()}</span>
+            <span>{BIZ.nombre} Ã‚Â© {new Date().getFullYear()}</span>
           </div>
           <div className="flex items-center gap-4">
             <a href="#">Aviso legal</a>
@@ -349,6 +356,7 @@ export default function Landing() {
     </div>
   );
 }
+
 
 
 
