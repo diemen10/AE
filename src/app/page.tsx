@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { WhatsappLink } from "@/components/whatsapp-link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -50,7 +51,14 @@ export default function Landing() {
       <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className={`h-9 w-9 rounded-2xl bg-gradient-to-br ${BIZ.acento} shadow`} />
+            <Image
+              src="/logo.png"
+              alt={BIZ.nombre}
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-2xl object-cover"
+              priority
+            />
             <span className="font-semibold">{BIZ.nombre}</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
@@ -168,7 +176,7 @@ export default function Landing() {
             {[
               {
                 title: "Visado de estudios",
-                price: "desde 249��",
+                price: "desde 249 €",
                 bullets: [
                   "Checklist de documentos",
                   "Carta de motivación y revisión",
@@ -178,7 +186,7 @@ export default function Landing() {
               },
               {
                 title: "Cambio a residencia y trabajo",
-                price: "desde 349��",
+                price: "desde 349 €",
                 bullets: [
                   "Oferta de empleo y EX-03",
                   "Presentación telemática",
@@ -188,7 +196,7 @@ export default function Landing() {
               },
               {
                 title: "Arraigos / Nacionalidad",
-                price: "desde 299��",
+                price: "desde 299 €",
                 bullets: [
                   "Evaluación de vía legal",
                   "Recolección de pruebas",
@@ -255,16 +263,18 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold">Lo que dicen nuestros clientes</h2>
           <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {["Todo fue súper claro y rápido.", "Me ayudaron a cambiar de visado sin salir de España.", "Excelente comunicación por WhatsApp y resultados."].map(
-              (t, i) => (
-                <Card key={i} className="rounded-3xl">
-                  <CardContent className="p-6 text-sm text-slate-600">
-                    �S{t}⬝
-                    <div className="mt-3 text-xs text-slate-400">� Cliente verificado</div>
-                  </CardContent>
-                </Card>
-              )
-            )}
+            {[
+              "Todo fue súper claro y rápido.",
+              "Me ayudaron a cambiar de visado sin salir de España.",
+              "Excelente comunicación por WhatsApp y resultados.",
+            ].map((t, i) => (
+              <Card key={i} className="rounded-3xl">
+                <CardContent className="p-6 text-sm text-slate-600">
+                  <p className="leading-relaxed">“{t}”</p>
+                  <div className="mt-3 text-xs text-slate-400">Cliente verificado</div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -415,3 +425,4 @@ export default function Landing() {
     </div>
   );
 }
+
