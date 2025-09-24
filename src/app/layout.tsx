@@ -10,43 +10,43 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
-    default: "Tu Asesor�a de Extranjer�a | Madrid & Online",
-    template: "%s | Tu Asesor�a de Extranjer�a",
+    default: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    template: "%s | Tu AsesorÃ­a de ExtranjerÃ­a",
   },
   description:
-    "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
+    "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
   keywords: [
-    "extranjer�a",
-    "asesor�a migratoria",
-    "visado de estudios Espa�a",
+    "extranjerÃ­a",
+    "asesorÃ­a migratoria",
+    "visado de estudios EspaÃ±a",
     "arraigo social",
-    "nacionalidad espa�ola",
+    "nacionalidad espaÃ±ola",
     "residencia trabajo",
   ],
-  authors: [{ name: "Tu Asesor�a de Extranjer�a" }],
-  creator: "Tu Asesor�a de Extranjer�a",
+  authors: [{ name: "Tu AsesorÃ­a de ExtranjerÃ­a" }],
+  creator: "Tu AsesorÃ­a de ExtranjerÃ­a",
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: "https://tuextranjeria.com",
-    siteName: "Tu Asesor�a de Extranjer�a",
-    title: "Tu Asesor�a de Extranjer�a | Madrid & Online",
+    siteName: "Tu AsesorÃ­a de ExtranjerÃ­a",
+    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
     description:
-      "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
+      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
     images: [
       {
         url: "https://tuextranjeria.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tu Asesor�a de Extranjer�a",
+        alt: "Tu AsesorÃ­a de ExtranjerÃ­a",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tu Asesor�a de Extranjer�a | Madrid & Online",
+    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
     description:
-      "Tr�mites migratorios claros, r�pidos y sin estr�s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa�a.",
+      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
     images: ["https://tuextranjeria.com/og-image.jpg"],
   },
   icons: {
