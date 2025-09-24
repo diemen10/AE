@@ -147,7 +147,7 @@ export default function Landing() {
                   <Button className="w-full rounded-2xl">Quiero empezar ahora</Button>
                 </WhatsappLink>
                 <p className="text-[11px] text-slate-400 mt-2">
-                  Sin compromiso. Respuesta media en 2�6 h laborales.
+                  Sin compromiso. Respuesta media en 2-6 h laborales.
                 </p>
               </div>
             </div>
