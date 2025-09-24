@@ -10,43 +10,43 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
-    default: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
-    template: "%s | Tu AsesorÃ­a de ExtranjerÃ­a",
+    default: "Tu Asesor\u00EDa de Extranjer\u00EDa | Madrid & Online",
+    template: "%s | Tu Asesor\u00EDa de Extranjer\u00EDa",
   },
   description:
-    "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+    "Tr\u00E1mites migratorios claros, r\u00E1pidos y sin estr\u00E9s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa\u00F1a.",
   keywords: [
-    "extranjerÃ­a",
-    "asesorÃ­a migratoria",
-    "visado de estudios EspaÃ±a",
+    "extranjer\u00EDa",
+    "asesor\u00EDa migratoria",
+    "visado de estudios Espa\u00F1a",
     "arraigo social",
-    "nacionalidad espaÃ±ola",
+    "nacionalidad espa\u00F1ola",
     "residencia trabajo",
   ],
-  authors: [{ name: "Tu AsesorÃ­a de ExtranjerÃ­a" }],
-  creator: "Tu AsesorÃ­a de ExtranjerÃ­a",
+  authors: [{ name: "Tu Asesor\u00EDa de Extranjer\u00EDa" }],
+  creator: "Tu Asesor\u00EDa de Extranjer\u00EDa",
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: "https://tuextranjeria.com",
-    siteName: "Tu AsesorÃ­a de ExtranjerÃ­a",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    siteName: "Tu Asesor\u00EDa de Extranjer\u00EDa",
+    title: "Tu Asesor\u00EDa de Extranjer\u00EDa | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Tr\u00E1mites migratorios claros, r\u00E1pidos y sin estr\u00E9s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa\u00F1a.",
     images: [
       {
         url: "https://tuextranjeria.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tu AsesorÃ­a de ExtranjerÃ­a",
+        alt: "Tu Asesor\u00EDa de Extranjer\u00EDa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tu AsesorÃ­a de ExtranjerÃ­a | Madrid & Online",
+    title: "Tu Asesor\u00EDa de Extranjer\u00EDa | Madrid & Online",
     description:
-      "TrÃ¡mites migratorios claros, rÃ¡pidos y sin estrÃ©s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en EspaÃ±a.",
+      "Tr\u00E1mites migratorios claros, r\u00E1pidos y sin estr\u00E9s. Especialistas en visados de estudios y trabajo, arraigos y nacionalidad para latinoamericanos en Espa\u00F1a.",
     images: ["https://tuextranjeria.com/og-image.jpg"],
   },
   icons: {
@@ -56,6 +56,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 };
+
 
 export default function RootLayout({
   children,
