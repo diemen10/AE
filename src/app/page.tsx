@@ -48,17 +48,19 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-800">
       {/* NAV */}
-      <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200">
+      <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 relative">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image
-              src="/logo.png"
-              alt={BIZ.nombre}
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-2xl object-cover"
-              priority
-            />
+            <div className="relative h-9 w-9">
+              <Image
+                src="/logo.png"
+                alt={BIZ.nombre}
+                fill
+                sizes="36px"
+                className="rounded-2xl object-cover origin-center scale-[2.2]"
+                priority
+              />
+            </div>
             <span className="font-semibold">{BIZ.nombre}</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
@@ -81,6 +83,7 @@ export default function Landing() {
             </WhatsappLink>
           </div>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-slate-200 z-10" />
       </nav>
 
       {/* HERO */}
