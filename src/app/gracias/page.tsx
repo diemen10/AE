@@ -3,23 +3,23 @@ import Script from "next/script";
 
 const messages = {
   contact: {
-    title: "�Gracias por contactarnos!",
+    title: "\u00a1Gracias por contactarnos!",
     body:
       "Hemos recibido tu mensaje. Te escribiremos por email o WhatsApp en menos de 24 horas para revisar tu caso.",
     ctaLabel: "Volver al inicio",
     ctaHref: "/",
   },
   newsletter: {
-    title: "�Suscripci�n confirmada!",
+    title: "\u00a1Suscripci\u00f3n confirmada!",
     body:
-      "Te enviaremos recursos y avisos importantes sobre extranjer�a. Revisa tu bandeja de entrada (y la carpeta de spam por si acaso).",
+      "Te enviaremos recursos y avisos importantes sobre extranjer\u00eda. Revisa tu bandeja de entrada (y la carpeta de spam por si acaso).",
     ctaLabel: "Leer el blog",
     ctaHref: "#servicios",
   },
   default: {
-    title: "�Gracias!",
+    title: "\u00a1Gracias!",
     body:
-      "Tu acci�n se ha completado correctamente. Si necesitas algo m�s, estaremos encantados de ayudarte.",
+      "Tu acci\u00f3n se ha completado correctamente. Si necesitas algo m\u00e1s, estaremos encantados de ayudarte.",
     ctaLabel: "Volver al inicio",
     ctaHref: "/",
   },
