@@ -57,7 +57,7 @@ export default function Landing() {
                 alt={BIZ.nombre}
                 fill
                 sizes="36px"
-                className="rounded-2xl object-cover origin-center scale-[2.2]"
+                className="rounded-2xl object-cover origin-right -translate-x-2 scale-[2.2]"
                 priority
               />
             </div>
