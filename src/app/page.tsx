@@ -237,7 +237,6 @@ export default function Landing() {
               (step, i) => (
                 <Card key={i} className="rounded-3xl">
                   <CardContent className="p-6">
-                    <div className={`h-10 w-10 rounded-2xl bg-gradient-to-br ${BIZ.acento} mb-4`} />
                     <h4 className="font-semibold mb-2">{i + 1}. {step}</h4>
                     <p className="text-sm text-slate-600">
                       Explicamos requisitos, plazos reales y documentos. Nos ocupamos del papeleo y te mantenemos al
@@ -287,7 +286,7 @@ export default function Landing() {
             <AccordionItem value="q2">
               <AccordionTrigger>¿Cuánto tardan en dar una cita en el consulado?</AccordionTrigger>
               <AccordionContent>
-                Depende del país y la época del año. Recomendamos iniciar el proceso 60�90 días antes del inicio del
+                Depende del pais y la epoca del ano. Recomendamos iniciar el proceso 60-90 dias antes del inicio del
                 curso.
               </AccordionContent>
             </AccordionItem>
