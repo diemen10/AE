@@ -50,17 +50,7 @@ export default function Landing() {
       {/* NAV */}
       <nav className="sticky top-0 z-50 backdrop-blur bg-white/70 relative">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="relative h-9 w-9">
-              <Image
-                src="/logo.png"
-                alt={BIZ.nombre}
-                fill
-                sizes="36px"
-                className="rounded-2xl object-cover origin-right -translate-x-2 scale-[2.2]"
-                priority
-              />
-            </div>
+          <div className="flex items-center">
             <span className="font-semibold">{BIZ.nombre}</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
@@ -109,13 +99,13 @@ export default function Landing() {
               </a>
             </div>
             <div className="mt-6 flex items-center gap-6 text-sm text-slate-500">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center">
                 <Clock className="h-4 w-4" /> Respuesta en &lt;24h
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center">
                 <ShieldCheck className="h-4 w-4" /> Trámite seguro
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center">
                 <MapPin className="h-4 w-4" /> {BIZ.ciudad} · Online
               </span>
             </div>
@@ -335,7 +325,7 @@ export default function Landing() {
                 <Mail className="h-4 w-4" />
                 <span>{BIZ.email}</span>
               </a>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center">
                 <Globe2 className="h-4 w-4" />
                 <span>Atención en {BIZ.ciudad} y online</span>
               </div>
@@ -412,7 +402,7 @@ export default function Landing() {
       {/* FOOTER */}
       <footer className="py-10 border-t bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <div className={`h-7 w-7 rounded-xl bg-gradient-to-br ${BIZ.acento}`} />
             <span>
               {BIZ.nombre} © {new Date().getFullYear()}
