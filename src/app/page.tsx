@@ -40,6 +40,14 @@ const BIZ = {
   acento: "from-cyan-500 to-blue-600", // Tailwind gradient
 };
 
+
+const TRUST_BADGES = [
+  { title: "Extranjeria", subtitle: "Coordinamos expedientes y recursos" },
+  { title: "Universidades", subtitle: "Cartas de admision y visados" },
+  { title: "Consulados", subtitle: "Agenda y seguimiento de citas" },
+  { title: "ONGs", subtitle: "Acompa\u00f1amos procesos de arraigo" },
+];
+
 const WA_LINK = whatsappNumberDigits
   ? `https://wa.me/${whatsappNumberDigits}${whatsappMessageRaw ? `?text=${encodeURIComponent(whatsappMessageRaw)}` : ""}`
   : "#contacto";
@@ -149,16 +157,24 @@ export default function Landing() {
       </header>
 
       {/* TRUST / MARCAS */}
-      <section className="py-8">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between gap-6">
-          {["Extranjería", "Universidades", "Consulados", "ONGs"].map((m) => (
-            <div key={m} className="text-slate-400 text-sm">
-              Socios: {m}
-            </div>
-          ))}
+      <section className="py-8 bg-gradient-to-r from-slate-50 via-white to-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
+            Aliados y redes
+          </p>
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {TRUST_BADGES.map((badge) => (
+              <div
+                key={badge.title}
+                className="rounded-3xl border border-slate-200 bg-white/90 px-4 py-3 text-center shadow-sm backdrop-blur"
+              >
+                <div className="text-sm font-semibold text-slate-700">{badge.title}</div>
+                <div className="mt-1 text-xs text-slate-500">{badge.subtitle}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
       {/* SERVICIOS */}
       <section id="servicios" className="py-14 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
