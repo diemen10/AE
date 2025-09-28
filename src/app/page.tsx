@@ -40,12 +40,34 @@ const BIZ = {
   acento: "from-cyan-500 to-blue-600", // Tailwind gradient
 };
 
-
 const TRUST_BADGES = [
   { title: "Extranjeria", subtitle: "Coordinamos expedientes y recursos" },
   { title: "Universidades", subtitle: "Cartas de admision y visados" },
   { title: "Consulados", subtitle: "Agenda y seguimiento de citas" },
   { title: "ONGs", subtitle: "Acompa\u00f1amos procesos de arraigo" },
+];
+
+const PROCESS_STEPS = [
+  {
+    title: "Diagnóstico gratuito",
+    description:
+      "Revisamos tu situación, resolvemos dudas iniciales y te confirmamos qué trámites encajan con tu caso.",
+  },
+  {
+    title: "Plan a medida",
+    description:
+      "Preparamos un checklist personalizado con documentos, responsables y calendario para avanzar con seguridad.",
+  },
+  {
+    title: "Presentación del expediente",
+    description:
+      "Nos ocupamos de formularios, revisiones y citas para entregar tu expediente completo sin errores ni retrasos.",
+  },
+  {
+    title: "Acompañamiento hasta resolución",
+    description:
+      "Seguimos tu solicitud, respondemos requerimientos y te guiamos en cada paso hasta tener la resolución final.",
+  },
 ];
 
 const WA_LINK = whatsappNumberDigits
@@ -249,19 +271,16 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold">Cómo trabajamos</h2>
           <div className="grid md:grid-cols-4 gap-6 mt-8">
-            {["Diagnóstico gratuito", "Plan a medida", "Presentación del expediente", "Acompañamiento hasta resolución"].map(
-              (step, i) => (
-                <Card key={i} className="rounded-3xl">
-                  <CardContent className="p-6">
-                    <h4 className="font-semibold mb-2">{i + 1}. {step}</h4>
-                    <p className="text-sm text-slate-600">
-                      Explicamos requisitos, plazos reales y documentos. Nos ocupamos del papeleo y te mantenemos al
-                      día por WhatsApp.
-                    </p>
-                  </CardContent>
-                </Card>
-              )
-            )}
+            {PROCESS_STEPS.map((step, i) => (
+              <Card key={step.title} className="rounded-3xl">
+                <CardContent className="p-6">
+                  <h4 className="font-semibold mb-2">
+                    {i + 1}. {step.title}
+                  </h4>
+                  <p className="text-sm text-slate-600">{step.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
