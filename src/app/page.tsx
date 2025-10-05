@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { WhatsappLink } from "@/components/whatsapp-link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -93,6 +93,9 @@ export default function Landing() {
             <a href="#faq" className="hover:text-slate-900">
               FAQ
             </a>
+            <Link href="/blog" className="hover:text-slate-900">
+              Blog
+            </Link>
             <a href="#contacto" className="hover:text-slate-900">
               Contacto
             </a>
