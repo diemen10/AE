@@ -207,7 +207,7 @@ export default function Landing() {
             {[
               {
                 title: "Visado de estudios",
-                price: "desde 249 €",
+                price: "desde 399 €",
                 bullets: [
                   "Checklist de documentos",
                   "Carta de motivación y revisión",
@@ -217,7 +217,7 @@ export default function Landing() {
               },
               {
                 title: "Cambio a residencia y trabajo",
-                price: "desde 349 €",
+                price: "desde 549 €",
                 bullets: [
                   "Oferta de empleo y EX-03",
                   "Presentación telemática",
@@ -227,7 +227,7 @@ export default function Landing() {
               },
               {
                 title: "Arraigos / Nacionalidad",
-                price: "desde 299 €",
+                price: "desde 449 €",
                 bullets: [
                   "Evaluación de vía legal",
                   "Recolección de pruebas",
