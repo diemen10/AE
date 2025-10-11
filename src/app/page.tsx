@@ -35,7 +35,7 @@ const BIZ = {
   nombre: "Tu Asesoría de Extranjería",
   ciudad: "Madrid",
   whatsapp: whatsappNumberRaw,
-  email: "hola@tuextranjeria.com",
+  email: "hola@abogadosextranjeriaonline.com",
   slogan: "Trámites migratorios claros, rápidos y sin estrés",
   acento: "from-cyan-500 to-blue-600", // Tailwind gradient
 };
